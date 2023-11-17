@@ -23,4 +23,4 @@ jobs:
       - name: Skip Xcode Macro Fingerprint Validation
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
       - name: Build
-        run: xcodebuild -project Executable/Executable.xcodeproj -scheme Executable clean build
+        run: xcodebuild -project Executable/Executable.xcodeproj -scheme Executable clean build | xcbeautify
